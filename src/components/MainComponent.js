@@ -26,7 +26,7 @@ class MainComponent extends Component{
         return (
             <div>
                 <Switch location={this.props.location}>
-                    <Route path='/home' component={() => <Search zipForm={this.props.zipForm}/>}/>
+                    <Route path='/home' component={() => <Search fetchByZip={this.props.fetchByZip} zipForm={this.props.zipForm}/>}/>
                     
                     <Redirect to="/home" />
                 </Switch>

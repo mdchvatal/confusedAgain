@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ZipInfo from './ZipInfo';
 import {Breadcrumb, BreadcrumbItem, Button, Label,  Col, Row} from 'reactstrap';
-import {Control, Form, LocalForm, Errors, actions} from 'react-redux-form';
+import {Control, LocalForm, Errors, actions} from 'react-redux-form';
 
 class Search extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ class Search extends Component {
                     <h3>Let's Check The Weather!</h3>
                 </div>
                 <div className="col-12 col-md-9">
-                    <Form model="zipForm" onSubmit={(values) => this.handleSubmit(values)}>
+                    <LocalForm model="zipForm" onSubmit={(values) => this.handleSubmit(values)}>
                         <Row className="form-group">
                             <Label htmlFor="zipForm" md={2}>Enter Zip Code</Label>
                             <Col md={10}>
@@ -37,7 +37,7 @@ class Search extends Component {
                                 <Button type="submit" color="primary">Get Weather</Button>
                             </Col>
                         </Row>
-                    </Form>
+                    </LocalForm>
                 </div>
                 <div>
                     <ZipInfo zipForm={this.props.zipForm}/>
