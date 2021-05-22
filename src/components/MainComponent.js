@@ -8,12 +8,14 @@ import Search from './SearchComponent';
 
 const mapStateToProps = (state) => {
 	return {
-		zipForm: state.zipForm,
+        weatherData: state.reducer.weatherData,
+		zipForm: state.zipForm
 	}
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchByZip: () => {dispatch(fetchByZip)}
+    fetchByZip: (zip) => {dispatch(fetchByZip(zip))},
+    resetForm: () => {dispatch(actions.reset('zipForm'))}
 })
 
 class MainComponent extends Component{
@@ -26,8 +28,11 @@ class MainComponent extends Component{
         return (
             <div>
                 <Switch location={this.props.location}>
-                    <Route path='/home' component={() => <Search fetchByZip={this.props.fetchByZip} zipForm={this.props.zipForm}/>}/>
-                    
+                    <Route path='/home' component={() => 
+                        <Search fetchByZip={this.props.fetchByZip} 
+                            zipForm={this.props.zipForm}
+                            resetForm={this.props.resetForm}
+                            weatherData={this.props.weatherData}/>}/>
                     <Redirect to="/home" />
                 </Switch>
             </div>

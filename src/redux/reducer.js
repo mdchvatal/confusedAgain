@@ -1,6 +1,18 @@
+import * as ActionTypes from './ActionTypes';
+
 export const Reducer = (state = {
-    zipForm: ''
+    weatherData: null,
+    zipForm: null
 }, action) => {
-    return {...state, zipForm: action.payload}
+    switch(action.type) {
+        case ActionTypes.ADD_ZIP:
+            return {...state, weatherData: null, zipForm: action.payload}
+
+        case ActionTypes.FETCH_DATA:
+            return {...state, weatherData: action.payload, zipForm: null}
+        
+        default:
+            return state;
+    }
 }
 

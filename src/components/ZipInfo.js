@@ -1,20 +1,29 @@
-import React from 'react';
-import { Media, Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import React, {Component} from 'react';
+import {Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Control, Form, Errors, actions} from 'react-redux-form';
 
 
-const ZipInfo = (props) => {
-    if (props.zipForm != null) {
-        return(
-            <div className="container">
-                <div className="row">
-                    <h4>{props.zipForm}</h4>
+class ZipInfo extends Component{
+    constructor(props) {
+        super(props);
+    } 
+
+    render() {
+        if (this.props.weatherInfo) {
+            return(
+                <div>
+                    <Card>
+                    <CardBody>
+                        <CardText>{this.props.weatherInfo}</CardText>
+                    </CardBody>
+                    </Card>
                 </div>
-            </div>
-        );
-    } else {
-        return(
-            <div></div>
-        )
+            );
+        } else {
+            return(
+                <div><h4>Let's check the weather</h4></div>
+            )
+        }
     }
 }
 
